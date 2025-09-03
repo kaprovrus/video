@@ -20,19 +20,18 @@
 </head>
 <body>
   <video id="video" controls autoplay loop muted>
-  <source src="https://dl.dropboxusercontent.com/scl/fi/9hhvzof38v55vovt4lpda/video.mp4?rlkey=yatsyyiswxn2jp8qp4jfilx8y" type="video/mp4">
+    <source src="https://dl.dropboxusercontent.com/scl/fi/9hhvzof38v55vovt4lpda/video.mp4?rlkey=yatsyyiswxn2jp8qp4jfilx8y" type="video/mp4">
     Ваш браузер не поддерживает видео.
-</video>
-
+  </video>
 
   <script>
     const params = new URLSearchParams(window.location.search);
-    const delay = parseInt(params.get("delay") || "0");
+    const delay = parseInt(params.get("delay") || "0"); // секунды
 
     const video = document.getElementById("video");
 
     video.addEventListener("loadedmetadata", () => {
-      if (delay > 0) {
+      if (delay > 0 && delay < video.duration) {
         video.currentTime = delay;
       }
       video.play();
